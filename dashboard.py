@@ -38,7 +38,29 @@ def add_case():
         writer = csv.DictWriter(file, fieldnames =  cases[0].keys())
         writer.writerow(new_case)
 
+def update_status():
+    with open ("backlog.csv", "r") as file:
+        reader = csv.DictReader(file)
+        cases = list(reader)
+    
+    update = input ("Enter ID: ")
+
+    found= False
+    for case in cases:
+        if case["id"] == update:
+            case["status"] = input("Enter new status: ")
+            found =  True
+    
+    if not found:
+        print ("ID not found")
+    
+    with open ("backlog.csv", "w", newline="") as file:
+        writer = csv.DictWriter(file, fieldnames = cases[0].keys())
+        writer.writeheader()
+        writer.writerows(cases)
+
 
 
 view_cases()       
-add_case()
+#add_case()
+update_status()
