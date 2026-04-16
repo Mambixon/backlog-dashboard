@@ -1,7 +1,7 @@
 id,transaction_id,company name,root_cause,status,owner,jira,priority,date_opened,comment
 001,g63093h,Client A,Sub-Account Aggregation Bug,Under Investigation,IT,407,High,2026-01-10,Awaiting Compliance sign-off before Jira ticket submitted
 002,538gsde,Client B,Payrun False Positive,Closed,IT,405,Low,2026-01-15,Resolved 19 March 2026 - monitoring ongoing
-003,nmawe72,Client C,Redundant Rules - Identical Thresholds,Waiting Review,Compliance,,Medium,2026-01-20,Calibration review required across all time windows
+003,nmawe72,Client C,Redundant Rules - Identical Thresholds,closed,Compliance,,Medium,2026-01-20,Calibration review required across all time windows
 004,09dewq3,Client D,Sub-Account Aggregation Bug,Under Investigation,IT,407,High,2026-01-22,Same issue as Client A - pending same fix
 005,bb54398,Client E,Payrun False Positive,Closed,Customer Success,405,Low,2026-02-01,Bulk close approved - legacy pre-fix alerts only
 006,asd456k,Client F,Country Code Bug,Escalated,IT,415,High,2026-02-05,57 alerts triggered - fix pending deployment
@@ -13,4 +13,3 @@ id,transaction_id,company name,root_cause,status,owner,jira,priority,date_opened
 012,gfew31m,Client L,Sub-Account Aggregation Bug,Escalated,IT,407,High,2026-03-10,23+ merchant groups affected - systemic fix required
 013,23dloy4,Client M,Misconfigured Rule - Missing Minute Rule,Waiting Review,Compliance,,Medium,2026-03-15,No individual minute-level rule configured - fallback threshold too low
 014,vvt49ja,Client N,Payrun False Positive,Under Investigation,Customer Success,405,Medium,2026-03-20,Legacy alerts pre-19-March - confirm bulk closure scope
-015,alo542c,Client O,Country Code Bug,Escalated,Risk,415,High,2026-04-01,Address field parsing issue - same root cause as Client F   
