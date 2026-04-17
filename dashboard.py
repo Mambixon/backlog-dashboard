@@ -82,8 +82,64 @@ def delete_case():
         print(f"Id {item_to_remove} has been removed")    
     
     
+def filter_cases():
+    with open ("backlog.csv", "r") as file: 
+        reader = csv.DictReader(file)
+        cases = list(reader)
+    print("FILTER BY: ")
+    print("1.Status")
+    print("2.Owner")
+    print("3.Priority")
+
+    option = int (input("Select option: "))
+
+    if option == 1:
+        select_status= input("Enter status: ")
+        filter_result =[]
+
+        #checking matching items
+        for case in cases:
+            if case["status"] ==select_status:
+                filter_result.append(case)
+
+        #displaying matched items
+        for result in filter_result:
+            print(result["id"],result["transaction_id"],result["company name"],result["status"],result["owner"], result["priority"])
+      
+       
+    elif option == 2:
+        select_owner= input("Enter owner name: ")
+        filter_result =[]
+
+        #checking matching items
+        for case in cases:
+            if case["owner"] == select_owner:
+                filter_result.append(case)
+
+        #displaying matched items
+        for result in filter_result:
+            print(result["id"],result["transaction_id"],result["company name"],result["status"],result["owner"], result["priority"])
+    elif option == 3:
+
+        select_priority= input("Enter priority: ")
+        filter_result =[]
+
+        #checking matching items
+        for case in cases:
+            if case["priority"] == select_priority:
+                filter_result.append(case)
+
+        #displaying matched items
+        for result in filter_result:
+            print(result["id"],result["transaction_id"],result["company name"],result["status"],result["owner"], result["priority"])
+    else:
+        print ("Invalid option")
+
+
+
 
 view_cases()       
 #add_case()
 #update_status()
-delete_case()
+#delete_case()
+filter_cases()
