@@ -43,11 +43,11 @@ def update_status():
         reader = csv.DictReader(file)
         cases = list(reader)
     
-    update = input ("Enter ID: ")
+    item_to_update = input ("Enter ID: ")
 
     found= False
     for case in cases:
-        if case["id"] == update:
+        if case["id"] == item_to_update:
             case["status"] = input("Enter new status: ")
             found =  True
     
@@ -59,8 +59,31 @@ def update_status():
         writer.writeheader()
         writer.writerows(cases)
 
+def delete_case():
+    with open ("backlog.csv", "r") as file:
+        reader = csv.DictReader(file)
+        cases = list(reader)
+    
+    
 
+    item_to_remove = input("Enter ID to be removed: ")
+    
+    found = any(case["id"] == item_to_remove for case in cases)
+    
+    #checking if id exists
+    if not found:
+        print("ID not found")
+    else:
+        new_cases = [case for case in cases if case["id"] !=item_to_remove]
+        with open("backlog.csv","w") as file:
+            writer = csv.DictWriter(file,fieldnames = cases[0].keys())
+            writer.writeheader()
+            writer.writerows(new_cases)
+        print(f"Id {item_to_remove} has been removed")    
+    
+    
 
 view_cases()       
 #add_case()
-update_status()
+#update_status()
+delete_case()
