@@ -135,11 +135,55 @@ def filter_cases():
     else:
         print ("Invalid option")
 
+def show_summary():
+    with open("backlog.csv", "r") as file:
+         reader = csv.DictReader(file)
+         cases = list(reader)
 
+    status_count={}
+    owner_count={}
+    priority_count={}
 
+    for case in cases:
+        #status
+        status = case["status"]
+        if status in status_count:
+            status_count[status] +=1
+        else:
+            status_count[status] =1
+        #owner
+        owner = case["owner"]
+        if owner in owner_count:
+            owner_count[owner] +=1
+        else:
+            owner_count[owner] =1
+        #priority
+        priority = case["priority"]
+        if priority in priority_count:
+            priority_count[priority] +=1
+        else:
+            priority_count[priority] =1
+    
+    print("BY STATUS:")
+    print()
+    for key,value in status_count.items():
+        print(key,value)
+    print()
+    print("BY OWNER:")
+    print()
+    for key,value in owner_count.items():
+        print(key,value)
+    print()
+    print("BY PRIORITY:")
+    print()
+    for key,value in priority_count.items():
+        print(key,value)
 
-view_cases()       
+       
+
+#view_cases()       
 #add_case()
 #update_status()
 #delete_case()
-filter_cases()
+#filter_cases()
+show_summary()
