@@ -1,0 +1,5 @@
+id,transaction_id,company name,root_cause,status,owner,jira,priority,date_opened,comment
+007,00hytrw,Client G,Misconfigured Rule - Threshold Too Low,Waiting Review,Compliance,,Medium,2026-02-10,Individual rule calibration required per client profile
+010,08cd43a,Client J,Redundant Rules - Identical Thresholds,Waiting Review,Compliance,,Medium,2026-03-01,Hour and 24hr rules at identical threshold - review needed
+013,23dloy4,Client M,Misconfigured Rule - Missing Minute Rule,Waiting Review,Compliance,,Medium,2026-03-15,No individual minute-level rule configured - fallback threshold too low
+014,vvt49ja,Client N,Payrun False Positive,Under Investigation,Customer Success,405,Medium,2026-03-20,Legacy alerts pre-19-March - confirm bulk closure scope

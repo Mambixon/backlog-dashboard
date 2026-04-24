@@ -4,6 +4,7 @@
 # Description: A CLI tool to manage and track Transaction Monitoring backlog cases
 
 import csv
+from datetime import datetime
 
 def view_cases():
     with open("backlog.csv", "r") as file:
@@ -105,7 +106,8 @@ def filter_cases():
         #displaying matched items
         for result in filter_result:
             print(result["id"],result["transaction_id"],result["company name"],result["status"],result["owner"], result["priority"])
-      
+
+        return filter_result
        
     elif option == 2:
         select_owner= input("Enter owner name: ")
@@ -119,6 +121,8 @@ def filter_cases():
         #displaying matched items
         for result in filter_result:
             print(result["id"],result["transaction_id"],result["company name"],result["status"],result["owner"], result["priority"])
+        return filter_result
+    
     elif option == 3:
 
         select_priority= input("Enter priority: ")
@@ -132,6 +136,9 @@ def filter_cases():
         #displaying matched items
         for result in filter_result:
             print(result["id"],result["transaction_id"],result["company name"],result["status"],result["owner"], result["priority"])
+
+        return filter_result
+    
     else:
         print ("Invalid option")
 
@@ -179,11 +186,37 @@ def show_summary():
     for key,value in priority_count.items():
         print(key,value)
 
-       
+def export_report(): 
+    with open ("backlog.csv", "r")as file:
+        reader = csv.DictReader(file)
+        cases = list(reader)
+    print ("Select export type")
+    print("1.All")
+    print("2.Filtered cases")
+    cases_to_export = int(input("Select export type"))
 
+    if cases_to_export == 1:
+        filename = f"report_{datetime.now().strftime('%Y-%m-%d')}.csv"
+        with open (filename, "w", newline ="") as export_file:
+            writer = csv.DictWriter(export_file, fieldnames = cases[0].keys())
+            writer.writeheader()
+            writer.writerows(cases)
+    elif cases_to_export == 2:
+        filtered = filter_cases()
+        filename = f"report_{datetime.now().strftime('%Y-%m-%d')}.csv"
+        with open (filename, "w", newline ="") as export_file:
+            writer = csv.DictWriter(export_file, fieldnames = cases[0].keys())
+            writer.writeheader()
+            writer.writerows(filtered)
+
+    else:
+        print("Incorrect input - select 1 or 2")
+
+    
 #view_cases()       
 #add_case()
 #update_status()
 #delete_case()
 #filter_cases()
-show_summary()
+#show_summary()
+export_report()
